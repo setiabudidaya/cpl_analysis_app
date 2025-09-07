@@ -36,8 +36,8 @@ def load_data(cpl_config_path, student_data_path):
     return df_cpl_mapping, df_sks_weights, df_mahasiswa_nilai
 
 # Adjust paths if necessary based on where the script is run
-cpl_config_path = 'cpl_analysis_app/cpl_config.xlsx'
-student_data_path = 'cpl_analysis_app/data_nilai_mahasiswa.xlsx'
+cpl_config_path = 'https://github.com/setiabudidaya/cpl_analysis_app/cpl_config.xlsx'
+student_data_path = 'https://github.com/setiabudidaya/cpl_analysis_app/data_nilai_mahasiswa.xlsx'
 
 if not os.path.exists(cpl_config_path):
     st.error(f"Error: Configuration file not found at {cpl_config_path}")
