@@ -39,12 +39,12 @@ def load_data(cpl_config_path, student_data_path):
 cpl_config_path = 'https://github.com/setiabudidaya/cpl_analysis_app/blob/main/cpl_config.xlsx'
 student_data_path = 'https://github.com/setiabudidaya/cpl_analysis_app/blob/main/data_nilai_mahasiswa.xlsx'
 
-if not os.path.exists(cpl_config_path):
-    st.error(f"Error: Configuration file not found at {cpl_config_path}")
-    st.stop()
-if not os.path.exists(student_data_path):
-    st.error(f"Error: Student data file not found at {student_data_path}")
-    st.stop()
+#if not os.path.exists(cpl_config_path):
+#    st.error(f"Error: Configuration file not found at {cpl_config_path}")
+#    st.stop()
+#if not os.path.exists(student_data_path):
+#   st.error(f"Error: Student data file not found at {student_data_path}")
+#   st.stop()
 
 df_cpl_mapping, df_sks_weights, df_mahasiswa_nilai = load_data(cpl_config_path, student_data_path)
 
