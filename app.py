@@ -1,4 +1,3 @@
-
 import streamlit as st
 import pandas as pd
 import plotly.graph_objects as go
@@ -26,7 +25,13 @@ with col6:
     st.write(' ')
 
 st.title("Analisis Pencapaian CPL")
-st.subheader("Program Studi: :blue[XXX] :office:  Fakultas: :red[XYZ]")
+
+# Add input fields for Program Studi and Fakultas
+program_studi = st.text_input("Masukkan Nama Program Studi", "XXX")
+fakultas = st.text_input("Masukkan Nama Fakultas", "XYZ")
+
+st.subheader(f"Program Studi: :blue[{program_studi}] :office:  Fakultas: :red[{fakultas}]")
+
 # --- Load Configuration and Data ---
 @st.cache_data
 def load_data(cpl_config_path, student_data_path):
@@ -36,16 +41,15 @@ def load_data(cpl_config_path, student_data_path):
     return df_cpl_mapping, df_sks_weights, df_mahasiswa_nilai
 
 # Adjust paths if necessary based on where the script is run
-#cpl_config_path = 'https://github.com/setiabudidaya/cpl_analysis_app/blob/main/cpl_config.xlsx'
-#student_data_path = 'https://github.com/setiabudidaya/cpl_analysis_app/blob/main/data_nilai_mahasiswa.xlsx'
-cpl_config_path = 'https://raw.githubusercontent.com/setiabudidaya/cpl_analysis_app/main/cpl_config.xlsx'
-student_data_path = 'https://raw.githubusercontent.com/setiabudidaya/cpl_analysis_app/main/data_nilai_mahasiswa.xlsx'
-#if not os.path.exists(cpl_config_path):
-#    st.error(f"Error: Configuration file not found at {cpl_config_path}")
-#    st.stop()
-#if not os.path.exists(student_data_path):
-#   st.error(f"Error: Student data file not found at {student_data_path}")
-#   st.stop()
+cpl_config_path = 'cpl_analysis_app/cpl_config.xlsx'
+student_data_path = 'cpl_analysis_app/data_nilai_mahasiswa.xlsx'
+
+if not os.path.exists(cpl_config_path):
+    st.error(f"Error: Configuration file not found at {cpl_config_path}")
+    st.stop()
+if not os.path.exists(student_data_path):
+    st.error(f"Error: Student data file not found at {student_data_path}")
+    st.stop()
 
 df_cpl_mapping, df_sks_weights, df_mahasiswa_nilai = load_data(cpl_config_path, student_data_path)
 
